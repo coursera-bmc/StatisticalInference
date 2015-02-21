@@ -1,5 +1,5 @@
 ---
-title: "statInferenceReport2"
+title: "Study of Effects of Vitamin C Delivery Methods on Tooth Growth in Guinea Pigs"
 author: "BMc"
 date: "Saturday, February 21, 2015"
 output: pdf_document
@@ -27,14 +27,16 @@ data_plot <- ggplot(ToothGrowth, aes(factor(dose),len))
 data_plot <- data_plot + geom_boxplot() + facet_grid(. ~ supp) + labs(title="Tooth Growth of Guinea Pigs faceted by Supplement Type", x="Dose in milligrams", y="Tooth Length")
 data_plot
 
-var(ToothGrowth[ToothGrowth$dose == 2 & ToothGrowth$supp == "VC",1])
-var(ToothGrowth[ToothGrowth$dose == 2 & ToothGrowth$supp == "OJ",1])
+t.test(len ~ supp, data=ToothGrowth)
+t.test(len ~ supp, data=ToothGrowth[ToothGrowth$dose == 0.5, 1:2])
+t.test(len ~ supp, data=ToothGrowth[ToothGrowth$dose == 1, 1:2])
+t.test(len ~ supp, data=ToothGrowth[ToothGrowth$dose == 2, 1:2])
 ```
-
+T-testing is done, first on the overall data set and then on each dosage level.  From the low p-values in dosages 0.5 and 1, it can be concluded that OJ is a much better delivery agent of Vitamin C than Ascorbic Acid. 
 
 ## Conclusions
-As shown above, the tooth growth for lower doses of OJ is much higher than the comparable amount for Ascorbic Acid, with up to three quarters of the readings showing longer tooth length in guinea pigs getting vitamin C from orange juice.  However, at a dose of 2 mg, the readings for ascorbic acid show a larger range which may indicate a better delivery mechanism than the comparable amount delivered via orange juice.  Unfortunately, due to higher variability, this may not be ideal in a test environment if an expected growth amount is required.
+As shown above, the tooth growth for 0.5 and 1 mg dosages of OJ is much higher than the comparable amount for Ascorbic Acid.  For a 2 mg dosage, there is no appreciable difference between the delivery methods.
 
 ## Assumptions for conclusion
 
-It is assumed that the data points collected are independent random observations and that the changes in tooth growth are connected solely to the delivery mechanism of Vitamin C and the dosage amount.  
+It is assumed that the data points collected are independent random observations and that the changes in tooth growth are connected solely to the delivery mechanism of Vitamin C and the dosage amount rather than to an additional, unmeasured factor.  

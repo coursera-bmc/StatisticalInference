@@ -1,5 +1,5 @@
 ---
-title: "Statistical Inference - Course Project"
+title: "Simulation of Random Exponential Distribution in Support of the Central Limit Theorem"
 author: "BMc"
 date: "Monday, February 16, 2015"
 output: pdf_document
